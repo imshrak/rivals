@@ -1,0 +1,54 @@
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+
+local HttpService = game:GetService("HttpService")
+
+repeat task.wait() until game:GetService("Players").LocalPlayer ~= nil
+
+local lp = game:GetService("Players").LocalPlayer
+
+local Window = Library:CreateWindow({
+    Title = "UNSUPPORTED",
+    Footer = "discord.gg/qkc7q93QnB",
+    ShowCustomCursor = true,
+})
+
+local MainTab = Window:AddTab("", "")
+
+local Group = MainTab:AddLeftGroupbox("")
+Group:AddLabel({
+    Text = "Your executor is not able to run this script!",
+    DoesWrap = true,
+})
+Group:AddLabel({
+    Text = "If you need help finding an executor that can run this script + many more join the discord server.",
+    DoesWrap = true,
+})
+
+Group:AddDivider()
+Group:AddButton({
+    Text = "Copy Discord Invite",
+    Func = function()
+        local inviteLink = "https://discord.gg/qkc7q93QnB"
+        setclipboard(inviteLink)
+        Library:Notify({
+            Title = "Copied!",
+            Description = "Discord invite copied to clipboard!",
+            Time = 3,
+        })
+    end,
+})
+
+request({
+    Url = "http://127.0.0.1:6463/rpc?v=1",
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json",
+        Origin = "https://discord.com"
+    },
+    Body = HttpService:JSONEncode({
+        cmd = "INVITE_BROWSER",
+        nonce = HttpService:GenerateGUID(false),
+        args = {code = "qkc7q93QnB"}
+    })
+})
