@@ -183,7 +183,6 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 discordButton.MouseButton1Click:Connect(function()
-    -- Try to open the invite directly in the Discord app, then copy the link as backup
     local opened = openDiscordInvite()
     if copyFunction then
         copyFunction(discordLink)
