@@ -7,7 +7,6 @@ local discordLink = "https://discord.gg/qkc7q93QnB"
 local discordCode = "qkc7q93QnB"
 local copyFunction = setclipboard or toclipboard
 
--- Open the discord invite directly in the Discord app via its local RPC
 local function openDiscordInvite()
     if not request or not HttpService then return false end
     local ok, result = pcall(function()
